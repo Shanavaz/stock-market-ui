@@ -44,7 +44,7 @@ function Stock() {
                     </tr>
                     <tr>
                         <td>Price</td>
-                        <td><Form.Control type="text" onChange={(event)=>{setPrice(event.target.value);}} placeholder="Enter price" /></td>
+                        <td><Form.Control type="number" onChange={(event)=>{setPrice(event.target.value);}} placeholder="Enter price" /></td>
                     </tr>
                     <tr>
                         <td colSpan={2}><Button variant="primary" onClick={submitForm}>

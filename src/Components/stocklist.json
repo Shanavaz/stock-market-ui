@@ -1,0 +1,20 @@
+{
+    "message": "Success",
+    "status": "OK",
+    "data": {
+        "min": 150.5,
+        "avg": 175.25,
+        "max": 200,
+        "companyName": "Google",
+        "stocks": [
+            {
+                "date": "19-06-2022",
+                "price": 200
+            },
+            {
+                "date": "19-06-2022",
+                "price": 150.5
+            }
+        ]
+    }
+}

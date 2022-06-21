@@ -32,9 +32,6 @@ function Company() {
 
         axios.post(url, reqData)
             .then(result => {
-                this.setState({
-                    customer: result.data,
-                })
                 console.log(result.data)
             }
             )
