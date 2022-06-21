@@ -34,10 +34,6 @@ function Company() {
             .then(result => {
                 this.setState({
                     customer: result.data,
-                    cId: result.data.apiResults[0].id,
-                    name: result.data.apiResults[0].name,
-                    mobile: result.data.apiResults[0].mobile,
-                    email: result.data.apiResults[0].email,
                 })
                 console.log(result.data)
             }
@@ -49,31 +45,32 @@ function Company() {
 
     return (
         <Form>
+            <center>Create Company</center>
             <Table bordered hover>
                 <tbody>
                     <tr>
                         <td>Code</td>
-                        <td><Form.Control type="text" onChange={(event)=>{setCode(event.target.value);}} placeholder="Enter code" /></td>
+                        <td><Form.Control type="text" onChange={(event) => { setCode(event.target.value); }} placeholder="Enter code" /></td>
                     </tr>
                     <tr>
                         <td>Name</td>
-                        <td><Form.Control type="text" onChange={(event)=>{setName(event.target.value);}} placeholder="Enter name" /></td>
+                        <td><Form.Control type="text" onChange={(event) => { setName(event.target.value); }} placeholder="Enter name" /></td>
                     </tr>
                     <tr>
                         <td>CEO</td>
-                        <td><Form.Control type="text" onChange={(event)=>{setCeoname(event.target.value);}} placeholder="Enter ceo name" /></td>
+                        <td><Form.Control type="text" onChange={(event) => { setCeoname(event.target.value); }} placeholder="Enter ceo name" /></td>
                     </tr>
                     <tr>
                         <td>Turnover</td>
-                        <td><Form.Control type="text" onChange={(event)=>{setTurnover(event.target.value);}} placeholder="Enter Turnover" /></td>
+                        <td><Form.Control type="text" onChange={(event) => { setTurnover(event.target.value); }} placeholder="Enter Turnover" /></td>
                     </tr>
                     <tr>
                         <td>Website</td>
-                        <td><Form.Control type="text" onChange={(event)=>{setWebsite(event.target.value);}} placeholder="Enter website" /></td>
+                        <td><Form.Control type="text" onChange={(event) => { setWebsite(event.target.value); }} placeholder="Enter website" /></td>
                     </tr>
                     <tr>
                         <td>Enlistment</td>
-                        <td><Form.Control type="text" onChange={(event)=>{setEnlist(event.target.value);}} placeholder="Enter enlistment" /></td>
+                        <td><Form.Control type="text" onChange={(event) => { setEnlist(event.target.value); }} placeholder="Enter enlistment" /></td>
                     </tr>
                     <tr>
                         <td colSpan={2}><Button variant="primary" onClick={submitForm}>
