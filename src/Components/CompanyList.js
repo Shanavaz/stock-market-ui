@@ -11,34 +11,47 @@ function CompanyList() {
     let [companyLoader, setCompanyLoader] = useState(true);
     let [result, setResult] = useState([]);
     let [companyDetail, setCompanyDetail] = useState([]);
-    let [compName, setCompName] = useState('');
-    let [startDate, setStartDate] = useState('');
-    let [endDate, setEndDate] = useState('');
+    // let [compName, setCompName] = useState('');
+    // let [startDate, setStartDate] = useState('');
+    // let [endDate, setEndDate] = useState('');
 
     useEffect(() => {
-        console.log(apiData.data.latestPrice)
 
-        setResult(apiData.data.latestPrice)
-        setLoader(false)
-        setCompName('compp')
-
-        // let url = ''
-        // axios.get(url)
-        //     .then(result => {
-        //         console.log(result.data)
-        //         setLoader(true)
-        //         setResult(result.data)
-        //     })
-        //     .catch(error => {
-        //         console.log(error)
-        //         setLoader(false)
-        //     });
+        // setResult(apiData.data.latestPrice)
+        // setLoader(false)
+        
+        let url = '/api/v1.0/market/company/getall'
+        axios.get(url)
+            .then(response => {
+                console.log(result)
+                setResult(response.data.data.latestPrice)
+                setLoader(false)
+            })
+            .catch(error => {
+                console.log(error)
+                setLoader(false)
+            });
     });
 
 
-    const fetchCompanyDetail = () => {
-        setCompanyLoader(false)
-        setCompanyDetail(companyInfo.data)
+    const fetchCompanyDetail = (event) => {
+        console.log(event.target.textContent)
+
+        // setCompanyLoader(false)
+        // setCompanyDetail(companyInfo.data)
+
+        let companycode = event.target.textContent
+        let url = '/api/v1.0/market/company/info/'+companycode
+        axios.get(url)
+            .then(response => {
+                console.log(response)
+                setCompanyDetail(response.data.data)
+                setCompanyLoader(false)
+            })
+            .catch(error => {
+                console.log(error)
+                setLoader(false)
+            });
     }
 
 

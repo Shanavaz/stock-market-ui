@@ -21,7 +21,7 @@ function Stock() {
                 "Access-Control-Allow-Origin": "*"            
             }
           };
-        let url = host+"/api/v1.0/market/stock/add/${compCode}";
+        let url = host+`/api/v1.0/market/stock/add/${compCode}`
 
         console.log(reqData)
         console.log(url)
