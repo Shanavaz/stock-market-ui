@@ -4,6 +4,7 @@ import axios from 'axios';
 
 function Stock() {
 
+    const host = 'http://localhost:8081'
     let [code, setCode] = useState('');
     let [price, setPrice] = useState('');
     let [compCode, setCompCode] = useState('');
@@ -14,16 +15,19 @@ function Stock() {
             price
         }
 
-        let url = "/api/v1.0/market/stock/add/"+compCode
+        let axiosConfig = {
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8',
+                "Access-Control-Allow-Origin": "*"            
+            }
+          };
+        let url = host+"/api/v1.0/market/stock/add/${compCode}";
 
         console.log(reqData)
         console.log(url)
 
-        axios.post(url, reqData)
+        axios.post(url, reqData,axiosConfig)
             .then(result => {
-                this.setState({
-                    customer: result.data,
-                })
                 console.log(result.data)
             }
             )

@@ -3,7 +3,7 @@ import { Form, Button, Table } from 'react-bootstrap'
 import axios from 'axios';
 
 function Company() {
-
+    const host = 'http://localhost:8081'
     let [code, setCode] = useState('');
     let [name, setName] = useState('');
     let [ceoname, setCeoname] = useState('');
@@ -28,16 +28,17 @@ function Company() {
 
         console.log(reqData)
 
-        let url = "/api/v1.0/market/company/register"
-
-        axios.post(url, reqData)
-            .then(result => {
-                this.setState({
-                    customer: result.data,
-                })
-                console.log(result.data)
+        let url = host+"/api/v1.0/market/company/register"
+        let axiosConfig = {
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8',
+                "Access-Control-Allow-Origin": "*",
             }
-            )
+          };
+        axios.post(url, reqData,axiosConfig)
+            .then(result => {
+                console.log(result.data)
+            })
             .catch(error =>
                 console.log(error)
             );
