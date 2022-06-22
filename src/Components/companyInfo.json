@@ -1,0 +1,13 @@
+{
+    "message": "Success",
+    "status": "OK",
+    "data": {
+        "website": "google.com",
+        "code": "Google",
+        "enlistment": "BSE",
+        "latestStockPrice": 150.5,
+        "name": "Google",
+        "ceo": "Sundar Pichai",
+        "turnover": 1000
+    }
+}

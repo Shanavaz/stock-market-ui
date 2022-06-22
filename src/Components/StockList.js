@@ -54,7 +54,6 @@ function StockList() {
             </table>
             <br />
             <br />
-            {loader}
             {loader == true ? <p>No Stocks to display</p> :
                 <React.Fragment>
 
