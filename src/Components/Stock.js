@@ -7,7 +7,6 @@ function Stock() {
     const host = 'http://localhost:8081'
     let [code, setCode] = useState('');
     let [price, setPrice] = useState('');
-    let [compCode, setCompCode] = useState('');
 
     const submitForm = () => {
         var reqData = {
@@ -21,7 +20,7 @@ function Stock() {
                 "Access-Control-Allow-Origin": "*"            
             }
           };
-        let url = host+"/api/v1.0/market/stock/add/${compCode}";
+        let url = host+`/api/v1.0/market/stock/add/${code}`;
 
         console.log(reqData)
         console.log(url)
@@ -39,7 +38,6 @@ function Stock() {
     return (
         <Form>
             <center>Create Stock</center>
-            <input type="text" onChange={(event)=>{setCompCode(event.target.value);}} placeholder="Enter Company code" />
             <Table bordered hover>
                 <tbody>
                     <tr>
