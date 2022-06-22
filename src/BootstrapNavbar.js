@@ -12,11 +12,15 @@ class BootstrapNavbar extends React.Component {
                             <Navbar.Collapse id="basic-navbar-nav">
                                 <Nav className="mr-auto">
                                     <Nav.Link href="/">Home</Nav.Link>
-                                    <Nav.Link href="/stock">Stock</Nav.Link>
-                                    <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                                        <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+                                    <NavDropdown title="Stock" id="basic-nav-dropdown">
+                                        <NavDropdown.Item href="/stock/create">Create</NavDropdown.Item>
                                         <NavDropdown.Divider />
-                                        <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                                        <NavDropdown.Item href="/stock/list">List</NavDropdown.Item>
+                                    </NavDropdown>
+                                    <NavDropdown title="Company" id="basic-nav-dropdown">
+                                        <NavDropdown.Item href="/company/create">Create</NavDropdown.Item>
+                                        <NavDropdown.Divider />
+                                        <NavDropdown.Item href="/company/list">List</NavDropdown.Item>
                                     </NavDropdown>
                                 </Nav>
                                 <Form inline>

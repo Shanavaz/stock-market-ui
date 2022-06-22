@@ -8,19 +8,20 @@ import {
 import BootstrapNavbar from './BootstrapNavbar.js';
 import Company from './Components/Company';
 import Stock from './Components/Stock';
+import StockList from './Components/StockList';
+import CompanyList from './Components/CompanyList';
 
 function App() {
   return (
     <div className="App">
-      <BootstrapNavbar/>
+      <BootstrapNavbar />
       <Router>
         <Switch>
-          <Route exact path="/">
-            <Company />
-          </Route>
-          <Route exact path="/stock">
-            <Stock />
-          </Route>
+          <Route exact path="/"><Company /></Route>
+          <Route path="/company/create"><Company /></Route>
+          <Route path="/stock/create"><Stock /></Route>
+          <Route path="/company/list"><CompanyList /></Route>
+          <Route path="/stock/list"><StockList /></Route>
         </Switch>
       </Router>
     </div>
