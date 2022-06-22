@@ -7,6 +7,8 @@ import companyInfo from './companyInfo.json';
 
 function CompanyList() {
 
+    const host = 'http://localhost:8081'
+
     let [loader, setLoader] = useState(true);
     let [companyLoader, setCompanyLoader] = useState(true);
     let [result, setResult] = useState([]);
@@ -20,7 +22,7 @@ function CompanyList() {
         // setResult(apiData.data.latestPrice)
         // setLoader(false)
         
-        let url = '/api/v1.0/market/company/getall'
+        let url = host+'/api/v1.0/market/company/getall'
         axios.get(url)
             .then(response => {
                 console.log(result)
@@ -31,7 +33,7 @@ function CompanyList() {
                 console.log(error)
                 setLoader(false)
             });
-    });
+    },[]);
 
 
     const fetchCompanyDetail = (event) => {
@@ -39,9 +41,8 @@ function CompanyList() {
 
         // setCompanyLoader(false)
         // setCompanyDetail(companyInfo.data)
-
         let companycode = event.target.textContent
-        let url = '/api/v1.0/market/company/info/'+companycode
+        let url = `${host}/api/v1.0/market/company/info/${companycode}`;
         axios.get(url)
             .then(response => {
                 console.log(response)

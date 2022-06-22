@@ -6,6 +6,7 @@ import apiData from './stocklist.json';
 
 function StockList() {
 
+    const host = 'http://localhost:8081'
     let [loader, setLoader] = useState(true);
     let [result, setResult] = useState([]);
     let [compName, setCompName] = useState('');
@@ -29,7 +30,17 @@ function StockList() {
     // });
 
     const handleSubmit = () => {
-        let url = `/api/v1.0/market/stock/get/${compName}/${startDate}/${endDate}`
+
+        const start = new Date(startDate);
+        const end = new Date(endDate);
+
+        const isoStart = start.toISOString();
+        const isoEnd = end.toISOString();
+
+        console.log(isoStart)
+        console.log(isoEnd)
+
+        let url = `${host}/api/v1.0/market/stock/get/${compName}/${isoStart}/${isoEnd}`
         console.log(url)
         axios.get(url)
             .then(response => {

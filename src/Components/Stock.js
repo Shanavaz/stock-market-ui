@@ -10,8 +10,8 @@ function Stock() {
 
     const submitForm = () => {
         var reqData = {
-            code,
-            price
+            companyCode : code,
+            price: price
         }
 
         let axiosConfig = {
