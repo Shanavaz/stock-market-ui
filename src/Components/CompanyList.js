@@ -21,8 +21,8 @@ function CompanyList() {
 
         // setResult(apiData.data.latestPrice)
         // setLoader(false)
-        
-        let url = host+'/api/v1.0/market/company/getall'
+
+        let url = host + '/api/v1.0/market/company/getall'
         axios.get(url)
             .then(response => {
                 console.log(result)
@@ -33,7 +33,7 @@ function CompanyList() {
                 console.log(error)
                 setLoader(false)
             });
-    },[]);
+    }, []);
 
 
     const fetchCompanyDetail = (event) => {
@@ -92,28 +92,25 @@ function CompanyList() {
                         </tr>
                     </tbody>
                 </table></> : <></>}
-            <center>Lsit of Companies</center>
-            <Table bordered striped hover>
-                <tbody>
-                    <tr>
-                        <th>Price</th>
-                        <th>Company Name</th>
-                    </tr>
-                    {loader == false ?
-                        <>
-                            {
-                                result.map((detail) => {
-                                    return <tr>
-                                        <td>{detail.price}</td>
-                                        <td onClick={fetchCompanyDetail}>{detail.companyName}</td>
-                                    </tr>
-                                })
-                            }
-                        </>
-                        :
-                        <p>No companies to load</p>}
-                </tbody>
-            </Table>
+            <center>List of Companies</center>
+            {loader == false ?
+                <Table bordered striped hover>
+                    <tbody>
+                        <tr>
+                            <th>Price</th>
+                            <th>Company Name</th>
+                        </tr>
+                        {
+                            result.map((detail) => {
+                                return <tr>
+                                    <td>{detail.price}</td>
+                                    <td onClick={fetchCompanyDetail}>{detail.companyName}</td>
+                                </tr>
+                            })
+                        }
+
+                    </tbody>
+                </Table> : <p>No companies to load</p>}
         </Form>
     )
 }

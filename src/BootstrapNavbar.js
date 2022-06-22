@@ -23,7 +23,7 @@ class BootstrapNavbar extends React.Component {
                                         <NavDropdown.Item href="/company/list">List</NavDropdown.Item>
                                     </NavDropdown>
                                 </Nav>
-                                <Form inline>
+                                <Form>
                                     <FormControl type="text" placeholder="Search" className="mr-sm-2" />
                                     <Button variant="outline-success">Search</Button>
                                 </Form>

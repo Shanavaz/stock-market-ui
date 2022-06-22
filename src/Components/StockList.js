@@ -61,12 +61,12 @@ function StockList() {
             <table>
                 <tbody>
                     <tr>
-                        <th>Company Name</th>
+                        <th>Company Code</th>
                         <th>Start Date</th>
                         <th>End Date</th>
                     </tr>
                     <tr>
-                        <td><input type="text" onChange={(event) => { setCompName(event.target.value); }} placeholder="Enter Company Name" /></td>
+                        <td><input type="text" onChange={(event) => { setCompName(event.target.value); }} placeholder="Enter Company Code" /></td>
                         <td><input type="date" onChange={(event) => { setStartDate(event.target.value); }} /></td>
                         <td><input type="date" onChange={(event) => { setEndDate(event.target.value); }} /></td>
                         <td><button onClick={handleSubmit}>Submit</button></td>
@@ -108,7 +108,7 @@ function StockList() {
                                 <th>Price</th>
                             </tr>
                             {
-                                apiData.data.stocks.map((detail, key) => {
+                                result.data.stocks.map((detail, key) => {
                                     return <tr key={key}>
                                         <td>{detail.date}</td>
                                         <td>{detail.price}</td>
