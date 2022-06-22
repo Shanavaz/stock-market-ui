@@ -31,8 +31,18 @@ function StockList() {
     const handleSubmit = () => {
         let url = `/api/v1.0/market/stock/get/${compName}/${startDate}/${endDate}`
         console.log(url)
-        setLoader(false)
-        setResult(apiData)
+        axios.get(url)
+            .then(response => {
+                console.log(response)
+                setResult(response.data)
+                setLoader(false)
+            })
+            .catch(error => {
+                console.log(error)
+                setLoader(false)
+            });
+        // setLoader(false)
+        // setResult(apiData)
     }
 
     return (
@@ -54,7 +64,6 @@ function StockList() {
             </table>
             <br />
             <br />
-            {loader}
             {loader == true ? <p>No Stocks to display</p> :
                 <React.Fragment>
 
