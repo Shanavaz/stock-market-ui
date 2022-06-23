@@ -3,10 +3,11 @@ import { Form, Table } from 'react-bootstrap'
 import axios from 'axios';
 
 import apiData from './stocklist.json';
+import config from './config.json';
 
 function StockList() {
 
-    const host = 'http://localhost:8081'
+    const host = config.host
     let [loader, setLoader] = useState(true);
     let [result, setResult] = useState([]);
     let [compName, setCompName] = useState('');

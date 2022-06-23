@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react'
-import { Form, Table } from 'react-bootstrap'
+import { Form, Table, Button } from 'react-bootstrap'
 import axios from 'axios';
+import { TrashFill } from "react-bootstrap-icons";
 
 import apiData from './companylist.json';
 import companyInfo from './companyInfo.json';
+import config from './config.json';
 
 function CompanyList() {
 
-    const host = 'http://localhost:8081'
+    const host = config.host
 
     let [loader, setLoader] = useState(true);
     let [companyLoader, setCompanyLoader] = useState(true);
@@ -55,11 +57,26 @@ function CompanyList() {
             });
     }
 
+    const deleteCompany = (name, index) => {
+        console.log(name, index)
+
+        let url = `${host}/api/v1.0/market/company/delete/${name}`;
+        axios.delete(url)
+            .then(response => {
+                console.log(response)
+                setResult(result => result.splice(index, 1))
+                window.location.reload();
+            })
+            .catch(error => {
+                console.log(error)
+            });
+    }
+
 
     return (
         <Form>
-            {companyLoader == false ? <>
-                <h5 style={{ "textAlign": "left", "marginLeft": "20px" }}>Company Details</h5>
+            <h5 style={{ "textAlign": "left", "marginLeft": "20px" }}>Company Details</h5>
+            {companyLoader == false ?
                 <table style={{ "textAlign": "left", "marginLeft": "20px" }}>
                     <tbody>
                         <tr style={{ "borderWidth": "1px" }}>
@@ -91,7 +108,39 @@ function CompanyList() {
                             <td style={{ "borderWidth": "1px" }}>{companyDetail.turnover}</td>
                         </tr>
                     </tbody>
-                </table></> : <></>}
+                </table> :
+                <table style={{ "textAlign": "left", "marginLeft": "20px" }}>
+                    <tbody>
+                        <tr style={{ "borderWidth": "1px" }}>
+                            <th style={{ "borderWidth": "1px" }}>Name</th>
+                            <td style={{ "borderWidth": "1px" }}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        </tr>
+                        <tr style={{ "borderWidth": "1px" }}>
+                            <th style={{ "borderWidth": "1px" }}>CEO</th>
+                            <td style={{ "borderWidth": "1px" }}></td>
+                        </tr>
+                        <tr style={{ "borderWidth": "1px" }}>
+                            <th style={{ "borderWidth": "1px" }}>Code</th>
+                            <td style={{ "borderWidth": "1px" }}></td>
+                        </tr>
+                        <tr style={{ "borderWidth": "1px" }}>
+                            <th style={{ "borderWidth": "1px" }}>Website</th>
+                            <td style={{ "borderWidth": "1px" }}></td>
+                        </tr>
+                        <tr style={{ "borderWidth": "1px" }}>
+                            <th style={{ "borderWidth": "1px" }}>Enlistment</th>
+                            <td style={{ "borderWidth": "1px" }}></td>
+                        </tr>
+                        <tr style={{ "borderWidth": "1px" }}>
+                            <th style={{ "borderWidth": "1px" }}>Latest Stock Price</th>
+                            <td style={{ "borderWidth": "1px" }}></td>
+                        </tr>
+                        <tr style={{ "borderWidth": "1px" }}>
+                            <th style={{ "borderWidth": "1px" }}>TurnOver</th>
+                            <td style={{ "borderWidth": "1px" }}></td>
+                        </tr>
+                    </tbody>
+                </table>}
             <center>List of Companies</center>
             {loader == false ?
                 <Table bordered striped hover>
@@ -99,12 +148,14 @@ function CompanyList() {
                         <tr>
                             <th>Price</th>
                             <th>Company Name</th>
+                            <th>Option</th>
                         </tr>
                         {
-                            result.map((detail) => {
-                                return <tr>
+                            result.map((detail, index) => {
+                                return <tr key={index}>
                                     <td>{detail.price}</td>
-                                    <td onClick={fetchCompanyDetail}>{detail.companyName}</td>
+                                    <td style={{ "cursor": "pointer" }} onClick={fetchCompanyDetail}>{detail.companyName}</td>
+                                    <td style={{ "cursor": "no-drop" }}><TrashFill style={{ "cursor": "pointer" }} onClick={() => { deleteCompany(detail.companyName, index) }} /> </td>
                                 </tr>
                             })
                         }

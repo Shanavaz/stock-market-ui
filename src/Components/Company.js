@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import { Form, Button, Table } from 'react-bootstrap'
 import axios from 'axios';
+import config from './config.json';
 
 function Company() {
-    const host = 'http://localhost:8081'
+    const host = config.host
     let [code, setCode] = useState('');
     let [name, setName] = useState('');
     let [ceoname, setCeoname] = useState('');
