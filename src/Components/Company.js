@@ -3,6 +3,9 @@ import { Form, Button, Table } from 'react-bootstrap'
 import axios from 'axios';
 import config from './config.json';
 
+import { NotificationContainer, NotificationManager } from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
+
 function Company() {
     const host = config.host
     let [code, setCode] = useState('');
@@ -12,11 +15,6 @@ function Company() {
     let [website, setWebsite] = useState('');
     let [enlist, setEnlist] = useState('');
 
-    const handleChange = (event) => {
-        console.log(event.target.value)
-        setCode(event.target.type);
-        // console.log(code)
-    }
     const submitForm = () => {
         var reqData = {
             code,
@@ -29,19 +27,22 @@ function Company() {
 
         console.log(reqData)
 
-        let url = host+"/api/v1.0/market/company/register"
+        let url = host + "/api/v1.0/market/company/register"
         let axiosConfig = {
             headers: {
                 'Content-Type': 'application/json;charset=UTF-8',
                 "Access-Control-Allow-Origin": "*",
             }
-          };
-        axios.post(url, reqData,axiosConfig)
+        };
+        axios.post(url, reqData, axiosConfig)
             .then(result => {
                 console.log(result.data)
+                NotificationManager.info('Success');
             })
-            .catch(error =>
+            .catch(error => {
                 console.log(error)
+                NotificationManager.error('Something went wrong');
+            }
             );
     }
 
@@ -81,6 +82,7 @@ function Company() {
                     </tr>
                 </tbody>
             </Table>
+            <NotificationContainer />
         </Form>
     )
 }
