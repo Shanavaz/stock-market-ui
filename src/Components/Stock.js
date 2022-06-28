@@ -3,6 +3,9 @@ import { Form, Button, Table } from 'react-bootstrap'
 import axios from 'axios';
 import config from './config.json';
 
+import { NotificationContainer, NotificationManager } from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
+
 function Stock() {
 
     const host = config.host
@@ -11,28 +14,38 @@ function Stock() {
 
     const submitForm = () => {
         var reqData = {
-            companyCode : code,
+            companyCode: code,
             price: price
         }
 
         let axiosConfig = {
             headers: {
                 'Content-Type': 'application/json;charset=UTF-8',
-                "Access-Control-Allow-Origin": "*"            
+                "Access-Control-Allow-Origin": "*"
             }
-          };
-        let url = host+`/api/v1.0/market/stock/add/${code}`;
+        };
+        let url = host + `/api/v1.0/market/stock/add/${code}`;
 
         console.log(reqData)
         console.log(url)
 
-        axios.post(url, reqData,axiosConfig)
+        axios.post(url, reqData, axiosConfig)
             .then(result => {
                 console.log(result.data)
-            }
-            )
-            .catch(error =>
+                if (result.data && result.data.status == "OK") {
+                    NotificationManager.success("Success")
+                } else {
+                    if (result.data && result.data.message) {
+                        NotificationManager.success(result.data.message)
+                    } else {
+                        NotificationManager.error("Something went wrong")
+                    }
+                }
+            })
+            .catch(error => {
                 console.log(error)
+                NotificationManager.error('Error');
+            }
             );
     }
 
@@ -43,11 +56,11 @@ function Stock() {
                 <tbody>
                     <tr>
                         <td>Code</td>
-                        <td><Form.Control type="text" onChange={(event)=>{setCode(event.target.value);}} placeholder="Enter code" /></td>
+                        <td><Form.Control type="text" onChange={(event) => { setCode(event.target.value); }} placeholder="Enter code" /></td>
                     </tr>
                     <tr>
                         <td>Price</td>
-                        <td><Form.Control type="number" onChange={(event)=>{setPrice(event.target.value);}} placeholder="Enter price" /></td>
+                        <td><Form.Control type="number" onChange={(event) => { setPrice(event.target.value); }} placeholder="Enter price" /></td>
                     </tr>
                     <tr>
                         <td colSpan={2}><Button variant="primary" onClick={submitForm}>
@@ -56,6 +69,7 @@ function Stock() {
                     </tr>
                 </tbody>
             </Table>
+            <NotificationContainer />
         </Form>
     )
 }

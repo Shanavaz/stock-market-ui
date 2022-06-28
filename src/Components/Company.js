@@ -37,11 +37,19 @@ function Company() {
         axios.post(url, reqData, axiosConfig)
             .then(result => {
                 console.log(result.data)
-                NotificationManager.info('Success');
+                if (result.data && result.data.status == "OK") {
+                    NotificationManager.success("Success")
+                } else {
+                    if (result.data && result.data.message) {
+                        NotificationManager.success(result.data.message)
+                    } else {
+                        NotificationManager.error("Something went wrong")
+                    }
+                }
             })
             .catch(error => {
                 console.log(error)
-                NotificationManager.error('Something went wrong');
+                NotificationManager.error('Error');
             }
             );
     }

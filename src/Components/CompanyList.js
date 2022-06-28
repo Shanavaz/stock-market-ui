@@ -7,6 +7,9 @@ import apiData from './companylist.json';
 import companyInfo from './companyInfo.json';
 import config from './config.json';
 
+import { NotificationContainer, NotificationManager } from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
+
 function CompanyList() {
 
     const host = config.host
@@ -65,16 +68,27 @@ function CompanyList() {
             .then(response => {
                 console.log(response)
                 setResult(result => result.splice(index, 1))
+                if (response.data && response.data.status == "OK") {
+                    NotificationManager.success(response.data.message)
+                } else {
+                    if (response.data && response.data.message) {
+                        NotificationManager.success(response.data.message)
+                    } else {
+                        NotificationManager.error("Something went wrong")
+                    }
+                }
                 window.location.reload();
             })
             .catch(error => {
                 console.log(error)
+                NotificationManager.error('Error');
             });
     }
 
 
     return (
         <Form>
+            <NotificationContainer />
             <h5 style={{ "textAlign": "left", "marginLeft": "20px" }}>Company Details</h5>
             {companyLoader == false ?
                 <table style={{ "textAlign": "left", "marginLeft": "20px" }}>
