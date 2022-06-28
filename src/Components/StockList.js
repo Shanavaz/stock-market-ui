@@ -76,7 +76,7 @@ function StockList() {
             </table>
             <br />
             <br />
-            {loader == true ? <p>No Stocks to display</p> :
+            {loader == false && result.data != undefined && result.data != null ?
                 <React.Fragment>
 
                     <h5 style={{ "textAlign": "left", "marginLeft": "20px" }}>General Details</h5>
@@ -118,7 +118,8 @@ function StockList() {
                             }
                         </tbody>
                     </Table>
-                </React.Fragment>
+                </React.Fragment> :
+                <p>No Stocks to display</p>
             }
         </React.Fragment>
     )
