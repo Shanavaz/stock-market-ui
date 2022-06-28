@@ -3,7 +3,7 @@ import { Form, Table } from 'react-bootstrap'
 import axios from 'axios';
 
 import apiData from './stocklist.json';
-import config from './config.json';
+import config from './config';
 
 function StockList() {
 

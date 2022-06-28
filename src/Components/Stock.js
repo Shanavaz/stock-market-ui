@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Form, Button, Table } from 'react-bootstrap'
 import axios from 'axios';
-import config from './config.json';
+import config from './config';
 
 import { NotificationContainer, NotificationManager } from 'react-notifications';
 import 'react-notifications/lib/notifications.css';

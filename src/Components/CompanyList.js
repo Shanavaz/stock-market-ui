@@ -5,7 +5,7 @@ import { TrashFill } from "react-bootstrap-icons";
 
 import apiData from './companylist.json';
 import companyInfo from './companyInfo.json';
-import config from './config.json';
+import config from './config';
 
 import { NotificationContainer, NotificationManager } from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
