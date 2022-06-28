@@ -5,6 +5,9 @@ import axios from 'axios';
 import apiData from './stocklist.json';
 import config from './config';
 
+import { NotificationContainer, NotificationManager } from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
+
 function StockList() {
 
     const host = config.host
@@ -46,12 +49,22 @@ function StockList() {
         axios.get(url)
             .then(response => {
                 console.log(response)
-                setResult(response.data)
-                setLoader(false)
+                if (result.data && result.data.status == "OK") {
+                    NotificationManager.success("Success")
+                    setResult(response.data)
+                    setLoader(false)
+                } else {
+                    if (result.data && result.data.message) {
+                        NotificationManager.success(result.data.message)
+                    } else {
+                        NotificationManager.error("Something went wrong")
+                    }
+                }
             })
             .catch(error => {
                 console.log(error)
-                setLoader(false)
+                setLoader(true)
+                NotificationManager.error("Error")
             });
         // setLoader(false)
         // setResult(apiData)
@@ -121,6 +134,7 @@ function StockList() {
                 </React.Fragment> :
                 <p>No Stocks to display</p>
             }
+            <NotificationContainer />
         </React.Fragment>
     )
 }
