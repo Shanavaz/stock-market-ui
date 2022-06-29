@@ -41,7 +41,7 @@ function Company() {
                     NotificationManager.success("Success")
                 } else {
                     if (result.data && result.data.message) {
-                        NotificationManager.success(result.data.message)
+                        NotificationManager.error(result.data.message)
                     } else {
                         NotificationManager.error("Something went wrong")
                     }

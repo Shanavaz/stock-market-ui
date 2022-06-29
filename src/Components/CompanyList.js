@@ -72,7 +72,7 @@ function CompanyList() {
                     NotificationManager.success(response.data.message)
                 } else {
                     if (response.data && response.data.message) {
-                        NotificationManager.success(response.data.message)
+                        NotificationManager.error(response.data.message)
                     } else {
                         NotificationManager.error("Something went wrong")
                     }
