@@ -114,15 +114,15 @@ function StockList() {
                                 <th style={{ "borderWidth": "1px" }}>Company Name</th>
                                 <td style={{ "borderWidth": "1px" }}>{result.data.companyName != undefined || result.data.companyName != null ? result.data.companyName : ''}</td>                            </tr>
                             <tr>
-                                <th style={{ "borderWidth": "1px" }}>Maximum</th>
+                                <th style={{ "borderWidth": "1px" }}>Maximum Price (in Rupees)</th>
                                 <td style={{ "borderWidth": "1px" }}>{result.data.max}</td>
                             </tr>
                             <tr>
-                                <th style={{ "borderWidth": "1px" }}>Average</th>
+                                <th style={{ "borderWidth": "1px" }}>Average Price (in Rupees)</th>
                                 <td style={{ "borderWidth": "1px" }}>{result.data.avg}</td>
                             </tr>
                             <tr>
-                                <th style={{ "borderWidth": "1px" }}>Minimum</th>
+                                <th style={{ "borderWidth": "1px" }}>Minimum Price (in Rupees)</th>
                                 <td style={{ "borderWidth": "1px" }}>{result.data.min}</td>
                             </tr>
                         </tbody>
@@ -133,7 +133,7 @@ function StockList() {
                         <tbody>
                             <tr>
                                 <th>Date</th>
-                                <th>Price</th>
+                                <th>Stock Price (in Rupees)</th>
                             </tr>
                             {
                                 result.data.stocks.map((detail, key) => {
