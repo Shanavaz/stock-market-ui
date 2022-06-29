@@ -115,11 +115,12 @@ function CompanyList() {
                             <td style={{ "borderWidth": "1px" }}>{companyDetail.enlistment}</td>
                         </tr>
                         <tr style={{ "borderWidth": "1px" }}>
-                            <th style={{ "borderWidth": "1px" }}>Latest Stock Price</th>
+                            <th style={{ "borderWidth": "1px" }}>Latest Stock Price(in Rupees)
+                            </th>
                             <td style={{ "borderWidth": "1px" }}>{companyDetail.latestStockPrice}</td>
                         </tr>
                         <tr style={{ "borderWidth": "1px" }}>
-                            <th style={{ "borderWidth": "1px" }}>TurnOver (in Rupees)</th>
+                            <th style={{ "borderWidth": "1px" }}>TurnOver (in Cr)</th>
                             <td style={{ "borderWidth": "1px" }}>{companyDetail.turnover}</td>
                         </tr>
                     </tbody>
@@ -147,11 +148,11 @@ function CompanyList() {
                             <td style={{ "borderWidth": "1px" }}></td>
                         </tr>
                         <tr style={{ "borderWidth": "1px" }}>
-                            <th style={{ "borderWidth": "1px" }}>Latest Stock Price</th>
+                            <th style={{ "borderWidth": "1px" }}>Latest Stock Price(in Rupees)</th>
                             <td style={{ "borderWidth": "1px" }}></td>
                         </tr>
                         <tr style={{ "borderWidth": "1px" }}>
-                            <th style={{ "borderWidth": "1px" }}>TurnOver (in Rupees)</th>
+                            <th style={{ "borderWidth": "1px" }}>TurnOver (in Cr)</th>
                             <td style={{ "borderWidth": "1px" }}></td>
                         </tr>
                     </tbody>

@@ -1,7 +1,7 @@
-const environment = 'PROD'
+const environment = 'DEV'
 
 const configDev = {
-    host: "https://shadowstockapi.azurewebsites.net"
+    host: "http://localhost:8080"
 };
 
 const configProd = {
