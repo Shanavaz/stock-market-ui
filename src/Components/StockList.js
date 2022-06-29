@@ -38,6 +38,12 @@ function StockList() {
         const start = new Date(startDate);
         const end = new Date(endDate);
 
+        start.setMinutes(start.getMinutes() + 30)
+        start.setHours(start.getHours() + 5)
+        end.setMinutes(end.getMinutes() + 30)
+        end.setHours(end.getHours() + 5)
+        
+
         const isoStart = start.toISOString();
         const isoEnd = end.toISOString();
 
@@ -81,8 +87,8 @@ function StockList() {
                     </tr>
                     <tr>
                         <td><input type="text" onChange={(event) => { setCompName(event.target.value); }} placeholder="Enter Company Code" /></td>
-                        <td><input type="date" onChange={(event) => { setStartDate(event.target.value); }} /></td>
-                        <td><input type="date" onChange={(event) => { setEndDate(event.target.value); }} /></td>
+                        <td><input type="datetime-local" onChange={(event) => { setStartDate(event.target.value); }} /></td>
+                        <td><input type="datetime-local" onChange={(event) => { setEndDate(event.target.value); }} /></td>
                         <td><button onClick={handleSubmit}>Submit</button></td>
                     </tr>
                 </tbody>
