@@ -1,11 +1,12 @@
-const environment = 'DEV'
+const environment = 'PROD'
 
 const configDev = {
     host: "http://localhost:8080"
 };
 
 const configProd = {
-    host: "https://shadowstockapi.azurewebsites.net"
+    //https://shadowstockapi.azurewebsites.net
+    host: "https://sonicapi.azurewebsites.net"
 };
 console.log("cofig env")
 if (environment === 'PROD') {
