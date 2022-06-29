@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Form, Button, Table } from 'react-bootstrap'
 import axios from 'axios';
 import config from './config';
@@ -11,6 +11,23 @@ function Stock() {
     const host = config.host
     let [code, setCode] = useState('');
     let [price, setPrice] = useState('');
+    let [codeList, setCodeList] = useState([]);
+
+    useEffect(() => {
+
+        // setResult(apiData.data.latestPrice)
+        // setLoader(false)
+
+        let url = host + '/api/v1.0/market/company/fetchall'
+        axios.get(url)
+            .then(response => {
+                console.log(response)
+                setCodeList(response.data.data.companyList)
+            })
+            .catch(error => {
+                console.log(error)
+            });
+    }, []);
 
     const submitForm = () => {
         var reqData = {
@@ -56,7 +73,17 @@ function Stock() {
                 <tbody>
                     <tr>
                         <td>Code</td>
-                        <td><Form.Control type="text" onChange={(event) => { setCode(event.target.value); }} placeholder="Enter code" /></td>
+                        {/* <td><Form.Control type="text" onChange={(event) => { setCode(event.target.value); }} placeholder="Enter code" /></td> */}
+                        <td>
+                            <Form.Select aria-label="Default select example" onChange={(event) => { setCode(event.target.value); }}>
+                                <option>Select company</option>
+                                {
+                                    codeList.map((detail, index) => {
+                                        return <option value={detail.code}>{detail.name} - ({detail.code})</option>
+                                    })
+                                }
+                            </Form.Select>
+                        </td>
                     </tr>
                     <tr>
                         <td>Price</td>
