@@ -90,7 +90,7 @@ function CompanyList() {
         <Form>
             <NotificationContainer />
             <h5 style={{ "textAlign": "left", "marginLeft": "20px" }}>Company Details</h5>
-            <h6 style={{ "textAlign": "left", "marginLeft": "20px" }}>(Click on any company name to show the details)</h6>
+            <h6 style={{ "textAlign": "left", "marginLeft": "20px" }}>(Click on any company code to show the details)</h6>
             {companyLoader == false ?
                 <table style={{ "textAlign": "left", "marginLeft": "20px" }}>
                     <tbody>
@@ -129,7 +129,7 @@ function CompanyList() {
                     <tbody>
                         <tr style={{ "borderWidth": "1px" }}>
                             <th style={{ "borderWidth": "1px" }}>Name</th>
-                            <td style={{ "borderWidth": "1px" }}>(Click Below to populate)</td>
+                            <td style={{ "borderWidth": "1px" }}>(Click below code to populate)</td>
                         </tr>
                         <tr style={{ "borderWidth": "1px" }}>
                             <th style={{ "borderWidth": "1px" }}>CEO</th>
@@ -162,15 +162,17 @@ function CompanyList() {
                 <Table bordered striped hover>
                     <tbody>
                         <tr>
-                            <th>Price (in Rupees)</th>
+                            <th>Company Code</th>
                             <th>Company Name</th>
+                            <th>Price (in Rupees)</th>
                             <th>Option</th>
                         </tr>
                         {
                             result.map((detail, index) => {
                                 return <tr key={index}>
-                                    <td>{detail.price}</td>
                                     <td style={{ "cursor": "pointer" }} onClick={fetchCompanyDetail}>{detail.companyCode}</td>
+                                    <td>{detail.companyName}</td>
+                                    <td>{detail.price}</td>
                                     <td style={{ "cursor": "no-drop" }}><TrashFill style={{ "cursor": "pointer" }} onClick={() => { deleteCompany(detail.companyCode, index) }} /> </td>
                                 </tr>
                             })

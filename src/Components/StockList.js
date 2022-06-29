@@ -16,22 +16,21 @@ function StockList() {
     let [compName, setCompName] = useState('');
     let [startDate, setStartDate] = useState('');
     let [endDate, setEndDate] = useState('');
+    let [codeList, setCodeList] = useState([]);
 
-    // useEffect(() => {
+    useEffect(() => {
 
 
-    //     let url = ''
-    //     axios.get(url)
-    //         .then(result => {
-    //             console.log(result.data)
-    //             setLoader(true)
-    //             setResult(result.data)
-    //         })
-    //         .catch(error => {
-    //             console.log(error)
-    //             setLoader(false)
-    //         });
-    // });
+        let url = host + '/api/v1.0/market/company/fetchall'
+        axios.get(url)
+            .then(response => {
+                console.log(response)
+                setCodeList(response.data.data.companyList)
+            })
+            .catch(error => {
+                console.log(error)
+            });
+    }, []);
 
     const handleSubmit = () => {
 
@@ -42,7 +41,7 @@ function StockList() {
         start.setHours(start.getHours() + 5)
         end.setMinutes(end.getMinutes() + 30)
         end.setHours(end.getHours() + 5)
-        
+
 
         const isoStart = start.toISOString();
         const isoEnd = end.toISOString();
@@ -86,7 +85,17 @@ function StockList() {
                         <th>End Date</th>
                     </tr>
                     <tr>
-                        <td><input type="text" onChange={(event) => { setCompName(event.target.value); }} placeholder="Enter Company Code" /></td>
+                        {/* <td><input type="text" onChange={(event) => { setCompName(event.target.value); }} placeholder="Enter Company Code" /></td> */}
+                        <td>
+                            <select onChange={(event) => { setCompName(event.target.value); }}>
+                                <option>Select company</option>
+                                {
+                                    codeList.map((detail, index) => {
+                                        return <option value={detail.code}>{detail.name} - ({detail.code})</option>
+                                    })
+                                }
+                            </select>
+                        </td>
                         <td><input type="datetime-local" onChange={(event) => { setStartDate(event.target.value); }} /></td>
                         <td><input type="datetime-local" onChange={(event) => { setEndDate(event.target.value); }} /></td>
                         <td><button onClick={handleSubmit}>Submit</button></td>
@@ -103,7 +112,7 @@ function StockList() {
                         <tbody>
                             <tr style={{ "borderWidth": "1px" }}>
                                 <th style={{ "borderWidth": "1px" }}>Company Name</th>
-                                <td style={{ "borderWidth": "1px" }}>{result.data.companyName != undefined || result.data.companyName != null ? result.data.companyName: ''}</td>                            </tr>
+                                <td style={{ "borderWidth": "1px" }}>{result.data.companyName != undefined || result.data.companyName != null ? result.data.companyName : ''}</td>                            </tr>
                             <tr>
                                 <th style={{ "borderWidth": "1px" }}>Maximum</th>
                                 <td style={{ "borderWidth": "1px" }}>{result.data.max}</td>
