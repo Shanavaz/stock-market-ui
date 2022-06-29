@@ -39,6 +39,12 @@ function Company() {
                 console.log(result.data)
                 if (result.data && result.data.status == "OK") {
                     NotificationManager.success("Success")
+                    setCode('')
+                    setName('')
+                    setCeoname('')
+                    setTurnover('')
+                    setWebsite('')
+                    setEnlist('')
                 } else {
                     if (result.data && result.data.message) {
                         NotificationManager.error(result.data.message)
@@ -46,12 +52,6 @@ function Company() {
                         NotificationManager.error("Something went wrong")
                     }
                 }
-                setCode('')
-                setName('')
-                setCeoname('')
-                setTurnover('')
-                setWebsite('')
-                setEnlist('')
             })
             .catch(error => {
                 console.log(error)
@@ -67,27 +67,27 @@ function Company() {
                 <tbody>
                     <tr>
                         <td>Code</td>
-                        <td><Form.Control type="text" onChange={(event) => { setCode(event.target.value); }} placeholder="Enter code" /></td>
+                        <td><Form.Control type="text" onChange={(event) => { setCode(event.target.value); }} placeholder="Enter code" value={code} /></td>
                     </tr>
                     <tr>
                         <td>Name</td>
-                        <td><Form.Control type="text" onChange={(event) => { setName(event.target.value); }} placeholder="Enter name" /></td>
+                        <td><Form.Control type="text" onChange={(event) => { setName(event.target.value); }} placeholder="Enter name" value={name} /></td>
                     </tr>
                     <tr>
                         <td>CEO</td>
-                        <td><Form.Control type="text" onChange={(event) => { setCeoname(event.target.value); }} placeholder="Enter ceo name" /></td>
+                        <td><Form.Control type="text" onChange={(event) => { setCeoname(event.target.value); }} placeholder="Enter ceo name" value={ceoname} /></td>
                     </tr>
                     <tr>
                         <td>Turnover</td>
-                        <td><Form.Control type="number" onChange={(event) => { setTurnover(event.target.value); }} placeholder="Enter Turnover (in Crore Rupees)" /></td>
+                        <td><Form.Control type="number" onChange={(event) => { setTurnover(event.target.value); }} placeholder="Enter Turnover (in Crore Rupees)" value={turnover} /></td>
                     </tr>
                     <tr>
                         <td>Website</td>
-                        <td><Form.Control type="text" onChange={(event) => { setWebsite(event.target.value); }} placeholder="Enter website" /></td>
+                        <td><Form.Control type="text" onChange={(event) => { setWebsite(event.target.value); }} placeholder="Enter website" value={website} /></td>
                     </tr>
                     <tr>
                         <td>Enlistment</td>
-                        <td><Form.Control type="text" onChange={(event) => { setEnlist(event.target.value); }} placeholder="Enter enlistment" /></td>
+                        <td><Form.Control type="text" onChange={(event) => { setEnlist(event.target.value); }} placeholder="Enter enlistment" value={enlist} /></td>
                     </tr>
                     <tr>
                         <td colSpan={2}><Button variant="primary" onClick={submitForm}>

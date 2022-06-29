@@ -51,6 +51,8 @@ function Stock() {
                 console.log(result.data)
                 if (result.data && result.data.status == "OK") {
                     NotificationManager.success("Success")
+                    setCode('')
+                    setPrice('')
                 } else {
                     if (result.data && result.data.message) {
                         NotificationManager.error(result.data.message)
@@ -58,9 +60,6 @@ function Stock() {
                         NotificationManager.error("Something went wrong")
                     }
                 }
-                setCode('')
-                setPrice('')
-                setCodeList([])
             })
             .catch(error => {
                 console.log(error)
@@ -90,7 +89,7 @@ function Stock() {
                     </tr>
                     <tr>
                         <td>Price</td>
-                        <td><Form.Control type="number" onChange={(event) => { setPrice(event.target.value); }} placeholder="Enter price (in Rupees)" /></td>
+                        <td><Form.Control type="number" onChange={(event) => { setPrice(event.target.value); }} placeholder="Enter price (in Rupees)" value={price}/></td>
                     </tr>
                     <tr>
                         <td colSpan={2}><Button variant="primary" onClick={submitForm}>
