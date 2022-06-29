@@ -51,7 +51,7 @@ function Stock() {
 
     return (
         <Form>
-            <center>Create Stock</center>
+            <h1>Create Stock</h1>
             <Table bordered hover>
                 <tbody>
                     <tr>
@@ -60,7 +60,7 @@ function Stock() {
                     </tr>
                     <tr>
                         <td>Price</td>
-                        <td><Form.Control type="number" onChange={(event) => { setPrice(event.target.value); }} placeholder="Enter price" /></td>
+                        <td><Form.Control type="number" onChange={(event) => { setPrice(event.target.value); }} placeholder="Enter price (in Rupees)" /></td>
                     </tr>
                     <tr>
                         <td colSpan={2}><Button variant="primary" onClick={submitForm}>

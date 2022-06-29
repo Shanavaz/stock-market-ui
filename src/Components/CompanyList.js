@@ -90,6 +90,7 @@ function CompanyList() {
         <Form>
             <NotificationContainer />
             <h5 style={{ "textAlign": "left", "marginLeft": "20px" }}>Company Details</h5>
+            <h6 style={{ "textAlign": "left", "marginLeft": "20px" }}>(Click on any company name to show the details)</h6>
             {companyLoader == false ?
                 <table style={{ "textAlign": "left", "marginLeft": "20px" }}>
                     <tbody>
@@ -118,7 +119,7 @@ function CompanyList() {
                             <td style={{ "borderWidth": "1px" }}>{companyDetail.latestStockPrice}</td>
                         </tr>
                         <tr style={{ "borderWidth": "1px" }}>
-                            <th style={{ "borderWidth": "1px" }}>TurnOver</th>
+                            <th style={{ "borderWidth": "1px" }}>TurnOver (in Rupees)</th>
                             <td style={{ "borderWidth": "1px" }}>{companyDetail.turnover}</td>
                         </tr>
                     </tbody>
@@ -127,7 +128,7 @@ function CompanyList() {
                     <tbody>
                         <tr style={{ "borderWidth": "1px" }}>
                             <th style={{ "borderWidth": "1px" }}>Name</th>
-                            <td style={{ "borderWidth": "1px" }}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                            <td style={{ "borderWidth": "1px" }}>(Click Below to populate)</td>
                         </tr>
                         <tr style={{ "borderWidth": "1px" }}>
                             <th style={{ "borderWidth": "1px" }}>CEO</th>
@@ -150,17 +151,17 @@ function CompanyList() {
                             <td style={{ "borderWidth": "1px" }}></td>
                         </tr>
                         <tr style={{ "borderWidth": "1px" }}>
-                            <th style={{ "borderWidth": "1px" }}>TurnOver</th>
+                            <th style={{ "borderWidth": "1px" }}>TurnOver (in Rupees)</th>
                             <td style={{ "borderWidth": "1px" }}></td>
                         </tr>
                     </tbody>
                 </table>}
-            <center>List of Companies</center>
+            <h3>List of Companies</h3>
             {loader == false ?
                 <Table bordered striped hover>
                     <tbody>
                         <tr>
-                            <th>Price</th>
+                            <th>Price (in Rupees)</th>
                             <th>Company Name</th>
                             <th>Option</th>
                         </tr>

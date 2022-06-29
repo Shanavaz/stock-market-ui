@@ -6,11 +6,11 @@ class BootstrapNavbar extends React.Component {
             <div>
                 <div className="row">
                     <div className="col-md-12">
-                        <Navbar bg="dark" variant="dark" expand="lg" className="flex-column">
-                            {/* <Navbar.Brand href="#home">React Bootstrap Navbar - Tutsmake.com</Navbar.Brand> */}
+                        <Navbar bg="dark" variant="dark" expand="lg" >
                             <Navbar.Toggle aria-controls="basic-navbar-nav" />
                             <Navbar.Collapse id="basic-navbar-nav">
-                                <Nav className="mr-auto">
+                                <Navbar.Brand href="/"><h1>StockSonic</h1></Navbar.Brand>
+                                <Nav className="ml-auto">
                                     <Nav.Link href="/">Home</Nav.Link>
                                     <NavDropdown title="Stock" id="basic-nav-dropdown">
                                         <NavDropdown.Item href="/stock/create">Create</NavDropdown.Item>
@@ -23,10 +23,6 @@ class BootstrapNavbar extends React.Component {
                                         <NavDropdown.Item href="/company/list">List</NavDropdown.Item>
                                     </NavDropdown>
                                 </Nav>
-                                <Form>
-                                    <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                                    <Button variant="outline-success">Search</Button>
-                                </Form>
                             </Navbar.Collapse>
                         </Navbar>
                         <br />

@@ -56,7 +56,7 @@ function Company() {
 
     return (
         <Form>
-            <center>Create Company</center>
+            <h1>Create Company</h1>
             <Table bordered hover>
                 <tbody>
                     <tr>
@@ -73,7 +73,7 @@ function Company() {
                     </tr>
                     <tr>
                         <td>Turnover</td>
-                        <td><Form.Control type="text" onChange={(event) => { setTurnover(event.target.value); }} placeholder="Enter Turnover" /></td>
+                        <td><Form.Control type="text" onChange={(event) => { setTurnover(event.target.value); }} placeholder="Enter Turnover (in Rupees)" /></td>
                     </tr>
                     <tr>
                         <td>Website</td>
