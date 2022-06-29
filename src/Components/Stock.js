@@ -58,6 +58,9 @@ function Stock() {
                         NotificationManager.error("Something went wrong")
                     }
                 }
+                setCode('')
+                setPrice('')
+                setCodeList([])
             })
             .catch(error => {
                 console.log(error)

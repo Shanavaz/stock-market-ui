@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Form, Table } from 'react-bootstrap'
+import { Form, Table, Button } from 'react-bootstrap'
 import axios from 'axios';
 
 import apiData from './stocklist.json';
@@ -77,31 +77,32 @@ function StockList() {
 
     return (
         <React.Fragment>
-            <table>
+            <Table>
                 <tbody>
                     <tr>
                         <th>Company Code</th>
                         <th>Start Date</th>
                         <th>End Date</th>
+                        <th></th>
                     </tr>
                     <tr>
-                        {/* <td><input type="text" onChange={(event) => { setCompName(event.target.value); }} placeholder="Enter Company Code" /></td> */}
                         <td>
-                            <select onChange={(event) => { setCompName(event.target.value); }}>
+                            <Form.Select aria-label="Default select example" onChange={(event) => { setCompName(event.target.value); }}>
                                 <option>Select company</option>
                                 {
                                     codeList.map((detail, index) => {
                                         return <option value={detail.code}>{detail.name} - ({detail.code})</option>
                                     })
                                 }
-                            </select>
+                            </Form.Select>
+                            {/* </select> */}
                         </td>
-                        <td><input type="datetime-local" onChange={(event) => { setStartDate(event.target.value); }} /></td>
-                        <td><input type="datetime-local" onChange={(event) => { setEndDate(event.target.value); }} /></td>
-                        <td><button onClick={handleSubmit}>Submit</button></td>
+                        <td><Form.Control type="datetime-local" onChange={(event) => { setStartDate(event.target.value); }} /></td>
+                        <td><Form.Control type="datetime-local" onChange={(event) => { setEndDate(event.target.value); }} /></td>
+                        <td><Button variant="primary" onClick={handleSubmit}>Submit</Button></td>
                     </tr>
                 </tbody>
-            </table>
+            </Table>
             <br />
             <br />
             {loader == false && result.data != undefined && result.data != null ?

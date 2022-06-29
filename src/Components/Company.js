@@ -46,6 +46,12 @@ function Company() {
                         NotificationManager.error("Something went wrong")
                     }
                 }
+                setCode('')
+                setName('')
+                setCeoname('')
+                setTurnover('')
+                setWebsite('')
+                setEnlist('')
             })
             .catch(error => {
                 console.log(error)
