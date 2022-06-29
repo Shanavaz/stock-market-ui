@@ -169,8 +169,8 @@ function CompanyList() {
                             result.map((detail, index) => {
                                 return <tr key={index}>
                                     <td>{detail.price}</td>
-                                    <td style={{ "cursor": "pointer" }} onClick={fetchCompanyDetail}>{detail.companyName}</td>
-                                    <td style={{ "cursor": "no-drop" }}><TrashFill style={{ "cursor": "pointer" }} onClick={() => { deleteCompany(detail.companyName, index) }} /> </td>
+                                    <td style={{ "cursor": "pointer" }} onClick={fetchCompanyDetail}>{detail.companyCode}</td>
+                                    <td style={{ "cursor": "no-drop" }}><TrashFill style={{ "cursor": "pointer" }} onClick={() => { deleteCompany(detail.companyCode, index) }} /> </td>
                                 </tr>
                             })
                         }
