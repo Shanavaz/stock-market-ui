@@ -49,13 +49,13 @@ function StockList() {
         axios.get(url)
             .then(response => {
                 console.log(response)
-                if (result.data && result.data.status == "OK") {
+                if (response.data && response.data.status == "OK") {
                     NotificationManager.success("Success")
                     setResult(response.data)
                     setLoader(false)
                 } else {
-                    if (result.data && result.data.message) {
-                        NotificationManager.success(result.data.message)
+                    if (response.data && response.data.message) {
+                        NotificationManager.success(response.data.message)
                     } else {
                         NotificationManager.error("Something went wrong")
                     }
