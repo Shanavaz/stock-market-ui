@@ -51,7 +51,6 @@ function Stock() {
                 console.log(result.data)
                 if (result.data && result.data.status == "OK") {
                     NotificationManager.success("Success")
-                    setCode('')
                     setPrice('')
                 } else {
                     if (result.data && result.data.message) {
