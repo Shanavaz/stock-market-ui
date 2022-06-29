@@ -97,8 +97,7 @@ function StockList() {
                         <tbody>
                             <tr style={{ "borderWidth": "1px" }}>
                                 <th style={{ "borderWidth": "1px" }}>Company Name</th>
-                                <td style={{ "borderWidth": "1px" }}>{result.data.companyName}</td>
-                            </tr>
+                                <td style={{ "borderWidth": "1px" }}>{result.data.companyName != undefined || result.data.companyName != null ? result.data.companyName: ''}</td>                            </tr>
                             <tr>
                                 <th style={{ "borderWidth": "1px" }}>Maximum</th>
                                 <td style={{ "borderWidth": "1px" }}>{result.data.max}</td>
